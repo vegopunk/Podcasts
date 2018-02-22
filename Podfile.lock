@@ -1,12 +1,17 @@
 PODS:
   - Alamofire (4.5.1)
+  - SDWebImage (4.3.0):
+    - SDWebImage/Core (= 4.3.0)
+  - SDWebImage/Core (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.5)
+  - SDWebImage (~> 4.3)
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
 
-PODFILE CHECKSUM: 16a8cd70205dbe373c1cce8e7e5c4de51847bc2e
+PODFILE CHECKSUM: 8f049cb01f51d3c72f3dbbe5eb5c59b42caf9e10
 
 COCOAPODS: 1.4.0
