@@ -25,6 +25,7 @@ class PodcastsSearchController : UITableViewController,UISearchBarDelegate {
     //MARK:- Setup Work
     
     fileprivate func setupSearchBar() {
+        self.definesPresentationContext = true
         navigationItem.searchController = searchController
         //всегда показывать строку поиска
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -51,6 +52,12 @@ class PodcastsSearchController : UITableViewController,UISearchBarDelegate {
     
     //MARK:- UITableView
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodesController = EpisodesController()
+        let podcast  = self.podcasts[indexPath.row]
+        episodesController.podcast = podcast
+        navigationController?.pushViewController(episodesController, animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
@@ -61,7 +68,7 @@ class PodcastsSearchController : UITableViewController,UISearchBarDelegate {
         return label
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.podcasts.count == 0 ? 250 : 0
+        return self.podcasts.count > 0 ? 0 : 250
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
