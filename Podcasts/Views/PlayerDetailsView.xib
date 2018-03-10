@@ -20,6 +20,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N3h-as-4g0">
                     <rect key="frame" x="0.0" y="44" width="375" height="64"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1R-iG-6p4">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="0.66666666666666663"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="s0N-BT-rQP"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qMp-cN-orR">
                             <rect key="frame" x="8" y="8" width="359" height="48"/>
                             <subviews>
@@ -57,8 +64,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="qMp-cN-orR" secondAttribute="bottom" constant="8" id="3uM-Jw-eQu"/>
+                        <constraint firstItem="y1R-iG-6p4" firstAttribute="top" secondItem="N3h-as-4g0" secondAttribute="top" id="4Na-cY-ZVm"/>
                         <constraint firstItem="qMp-cN-orR" firstAttribute="leading" secondItem="N3h-as-4g0" secondAttribute="leading" constant="8" id="5iG-uV-IgH"/>
                         <constraint firstAttribute="trailing" secondItem="qMp-cN-orR" secondAttribute="trailing" constant="8" id="DZi-e5-Bps"/>
+                        <constraint firstItem="y1R-iG-6p4" firstAttribute="leading" secondItem="N3h-as-4g0" secondAttribute="leading" id="NbM-ND-Fq1"/>
+                        <constraint firstAttribute="trailing" secondItem="y1R-iG-6p4" secondAttribute="trailing" id="f9U-X2-s9o"/>
                         <constraint firstAttribute="height" constant="64" id="kqa-oR-cFq"/>
                         <constraint firstItem="qMp-cN-orR" firstAttribute="top" secondItem="N3h-as-4g0" secondAttribute="top" constant="8" id="nNn-7Z-1Ch"/>
                     </constraints>
@@ -240,6 +250,11 @@
             </connections>
             <point key="canvasLocation" x="-62" y="-130"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AMh-qd-OZw">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button"/>
+        </button>
     </objects>
     <resources>
         <image name="appicon" width="60" height="60"/>
