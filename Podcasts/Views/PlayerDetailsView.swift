@@ -13,13 +13,17 @@ class PlayerDetailsView: UIView {
     
     var episode : Episode! {
         didSet{
+            
+            miniTitleLabel.text = episode.title
             titleLabel.text = episode.title
+            
             authorLabel.text = episode.author
             
             playEpisode()
             
             guard let url = URL(string: episode.imageUrl ?? "") else {return}
             episodeImageView.sd_setImage(with: url)
+            miniEpisodeImageView.sd_setImage(with: url)
         }
     }
     
@@ -98,6 +102,28 @@ class PlayerDetailsView: UIView {
     
     //MARK:- IB Actions and Outlets
     
+    
+    @IBOutlet weak var miniEpisodeImageView: UIImageView!
+    @IBOutlet weak var miniTitleLabel: UILabel!
+    @IBOutlet weak var miniPlayPauseButton: UIButton! {
+        didSet{
+            miniPlayPauseButton.addTarget(self, action: #selector(handlePlayPause), for: .touchUpInside)
+        }
+    }
+    @IBOutlet weak var miniFastForwardButton: UIButton! {
+        didSet{
+            miniFastForwardButton.addTarget(self, action: #selector(handleFastForward(_:)), for: .touchUpInside)
+        }
+    }
+    
+    
+    
+    
+    @IBOutlet weak var miniPlayerView: UIView!
+    @IBOutlet weak var maximizedStackVIew: UIStackView!
+    
+    
+    
     @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
         print("Slider value: ", currentTimeSlider.value)
         let percentage = currentTimeSlider.value
@@ -146,10 +172,12 @@ class PlayerDetailsView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeEpisodeImageVIew()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             shrinkEpisodeImageView()
         }
     }
