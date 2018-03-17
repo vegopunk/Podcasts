@@ -163,6 +163,36 @@ class PlayerDetailsView: UIView {
             self.handlePlayPause()
             return .success
         }
+        
+        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+        
+        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handelPrevTrack))
+    }
+    
+    var playListEpisodes = [Episode]()
+    
+    @objc fileprivate func handelPrevTrack() {
+        //надо сделать по аналогии с следующим треком.
+    }
+    
+    @objc fileprivate func handleNextTrack() {
+        if playListEpisodes.count == 0 {
+            return
+        }
+        
+        let currentEpisodeIndex = playListEpisodes.index { (ep) -> Bool in
+            return self.episode.title == ep.title && self.episode.author == ep.author
+        }
+        guard let index = currentEpisodeIndex else {return}
+        
+        let nextEpisode : Episode
+        if index == playListEpisodes.count - 1 {
+            nextEpisode = playListEpisodes[0]
+        } else {
+            nextEpisode = playListEpisodes[index + 1]
+        }
+        
+        self.episode = nextEpisode
     }
     
     fileprivate func setupElapsedTime() {
